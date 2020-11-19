@@ -17,5 +17,10 @@ module.exports.cadastrar = function(application, req, res) {
         return
     }
 
+    var connection = application.config.dbConnection //pega a function da conexao mas nao executa ela
+    var UsuariosDAO = new application.app.models.UsuariosDAO(connection) // Instacia a classe e passa por parametro a function da conexao 
+
+    UsuariosDAO.insertUser(dadosForm)
+
     res.send('cadastro')
 }
